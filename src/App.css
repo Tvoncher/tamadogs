@@ -1,38 +1,94 @@
 .App {
-  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("http://www.braslav-star.by/wp-content/uploads/2019/11/IMG_6971.jpg");
+  background-size: cover;
+}
+.App__greeting {
+  width: 100vw;
+  height: 100vh;
+}
+.App__breedContainer {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100vw;
+  height: 100vh;
+  gap: 2%;
+}
+.breed {
+  width: 20%;
+  height: 25%;
+  transition: 1s;
+}
+.breed:hover {
+  scale: 1.1;
+}
+.breed img {
+  width: 100%;
+  height: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App__main {
+  width: 100%;
+  height: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.App__stats {
+  position: absolute;
+  width: 20%;
+  height: 40%;
+  top: 5%;
+  left: 3%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.App__buttons {
+  position: absolute;
+  width: 10%;
+  height: 40%;
+  right: 1%;
+  top: 5%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 2%;
+}
+.App__buttons img {
+  width: 100%;
+  border: 2px solid blue;
+  border-radius: 20%;
+  cursor: pointer;
+}
+.App__buttons img:hover {
+  scale: 1.1;
 }
 
-.App-link {
-  color: #61dafb;
+.App__dogImg {
+  position: absolute;
+  width: 30%;
+  height: 30%;
+  left: 35%;
+  top: 35%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App__events {
+  position: absolute;
+  width: 80%;
+  height: 20%;
+  bottom: 2%;
+  left: 10%;
+  display: flex;
+}
+
+.App__dogAvatar {
+  width: 20%;
+  border: 1px solid black;
+}
+.App__message {
+  width: 100%;
+  background-image: url("https://i.pinimg.com/originals/2b/cf/f1/2bcff16a079390dc8479586334f81a7e.png");
+}
+.App__message h2 {
+  margin: 0;
+}
+.App__message h3 {
+  margin: 2% 0 0 3%;
 }
