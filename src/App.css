@@ -39,6 +39,10 @@
   height: 40%;
   top: 5%;
   left: 3%;
+  color: red;
+}
+.App__stats h5 {
+  color: black;
 }
 
 .App__buttons {
@@ -69,26 +73,26 @@
   top: 35%;
 }
 
-.App__events {
+.App__deathScreen {
   position: absolute;
-  width: 80%;
-  height: 20%;
-  bottom: 2%;
-  left: 10%;
-  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+.App__deathScreen h2 {
+  margin-top: 10%;
+  color: white;
+}
+.App__reset {
+  animation: App__resetAnim 1s infinite;
 }
 
-.App__dogAvatar {
-  width: 20%;
-  border: 1px solid black;
-}
-.App__message {
-  width: 100%;
-  background-image: url("https://i.pinimg.com/originals/2b/cf/f1/2bcff16a079390dc8479586334f81a7e.png");
-}
-.App__message h2 {
-  margin: 0;
-}
-.App__message h3 {
-  margin: 2% 0 0 3%;
+@keyframes App__resetAnim {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }

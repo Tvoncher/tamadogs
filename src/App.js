@@ -2,36 +2,56 @@ import { Modal } from "@mui/material";
 import LinearProgress from "@mui/material/LinearProgress";
 import { useEffect, useState } from "react";
 import "./App.css";
+import { Events } from "./Events";
+import { Alerts } from "./Alerts";
 
 function App() {
   const [openGreeting, setOpenGreeting] = useState(true);
   const [breed, setBreed] = useState(null);
+  const [alive, setAlive] = useState(true);
   const [dogImgSrc, setDogImgSrc] = useState(null);
 
-  const [hunger, setHunger] = useState(100);
-  const [stress, setStress] = useState(100);
-  const [happiness, setHappiness] = useState(100);
+  const [hunger, setHunger] = useState(50);
+  const [stress, setStress] = useState(50);
+  const [happiness, setHappiness] = useState(50);
+
+  const [eventCounter, setEventCounter] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setHunger((hunger) => hunger - 1);
+      setHunger((hunger) => hunger - 4);
       return () => clearInterval(interval);
-    }, 500);
+    }, 3000);
   }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setStress((stress) => stress - 1);
+      setStress((stress) => stress - 4);
       return () => clearInterval(interval);
-    }, 700);
+    }, 4000);
   }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setHappiness((happiness) => happiness - 1);
+      setHappiness((happiness) => happiness - 4);
       return () => clearInterval(interval);
-    }, 1000);
+    }, 4000);
   }, []);
+
+  useEffect(() => {
+    setHunger(50);
+    setStress(50);
+    setHappiness(50);
+  }, [breed]);
+
+  useEffect(() => {
+    if (hunger > 100 || stress > 100 || happiness > 100) {
+      setAlive(false);
+    }
+    if (hunger < 0 || stress < 0 || happiness < 0) {
+      setAlive(false);
+    }
+  }, [hunger, stress, happiness]);
 
   return (
     <div className="App">
@@ -89,10 +109,10 @@ function App() {
                     setBreed("haski");
                     setOpenGreeting(false);
                     setDogImgSrc(
-                      process.env.PUBLIC_URL + "/images/breeds/haski.jpg"
+                      process.env.PUBLIC_URL + "/images/breeds/haski.png"
                     );
                   }}
-                  src={process.env.PUBLIC_URL + "/images/breeds/haski.jpg"}
+                  src={process.env.PUBLIC_URL + "/images/breeds/haski.png"}
                   alt="haski"
                 />
               </div>
@@ -141,10 +161,10 @@ function App() {
                     setBreed("korgi");
                     setOpenGreeting(false);
                     setDogImgSrc(
-                      process.env.PUBLIC_URL + "/images/breeds/korgi.jpg"
+                      process.env.PUBLIC_URL + "/images/breeds/korgi.png"
                     );
                   }}
-                  src={process.env.PUBLIC_URL + "/images/breeds/korgi.jpg"}
+                  src={process.env.PUBLIC_URL + "/images/breeds/korgi.png"}
                   alt="korgi"
                 />
               </div>
@@ -156,56 +176,67 @@ function App() {
       {breed && (
         <div className="App__main">
           <div className="App__stats">
-            hunger
+            <h5>hunger</h5>
             <LinearProgress
-              color="success"
+              color={hunger > 30 ? "success" : "inherit"}
               variant="determinate"
               value={hunger}
             />
-            <br />
-            stress
+            <h5>stress</h5>
             <LinearProgress
-              color="success"
+              color={stress > 30 ? "success" : "inherit"}
               variant="determinate"
               value={stress}
             />
-            <br />
-            happiness
+            <h5>happiness</h5>
             <LinearProgress
-              color="success"
+              color={happiness > 30 ? "success" : "inherit"}
               variant="determinate"
               value={happiness}
             />
           </div>
           <div className="App__buttons">
             <img
-              onClick={() => setHunger((hunger) => hunger + 10)}
+              onClick={() => {
+                setEventCounter((eventCounter) => eventCounter + 1);
+                setHunger((hunger) => hunger + 10);
+              }}
               src="https://cdn-icons-png.flaticon.com/512/2771/2771401.png"
               alt="feed"
             />
             <img
-              onClick={() => setStress((stress) => stress + 10)}
+              onClick={() => {
+                setEventCounter((eventCounter) => eventCounter + 1);
+                setStress((stress) => stress + 10);
+              }}
               src="https://w7.pngwing.com/pngs/120/435/png-transparent-person-sports-throwing-a-ball-stick-figures-in-motion-icon.png"
               alt="play"
             />
             <img
-              onClick={() => setHappiness((happiness) => happiness + 10)}
+              onClick={() => {
+                setEventCounter((eventCounter) => eventCounter + 1);
+                setHappiness((happiness) => happiness + 10);
+              }}
               src="https://cdn.iconscout.com/icon/premium/png-256-thumb/dog-sitting-1465875-1241873.png"
               alt="train"
             />
           </div>
           <img className="App__dogImg" src={dogImgSrc} alt="dog" />
-          <div className="App__events">
-            <img
-              className="App__dogAvatar"
-              src="https://i.pinimg.com/736x/ef/59/0d/ef590d3e2990e6827d96ad8ce55a755b.jpg"
-              alt="avatar"
-            />
-            <div className="App__message">
-              <h2>Trixi</h2>
-              <h3>Hello there. How r u?</h3>
+          <Alerts hunger={hunger} stress={stress} happiness={happiness} />
+          <Events eventCounter={eventCounter} />
+          {!alive && (
+            <div className="App__deathScreen">
+              <center>
+                <h2>К сожалению,щенок умер :(</h2> <br />
+                <h2
+                  className="App__reset"
+                  onClick={() => document.location.reload()}
+                >
+                  Нажмите,чтобы начать заново
+                </h2>
+              </center>
             </div>
-          </div>
+          )}
         </div>
       )}
     </div>
