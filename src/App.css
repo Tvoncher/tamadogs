@@ -1,7 +1,7 @@
 .App {
   width: 100vw;
   height: 100vh;
-  background-image: url("http://www.braslav-star.by/wp-content/uploads/2019/11/IMG_6971.jpg");
+  background-image: url("/public/images/bg.jpg");
   background-size: cover;
 }
 .App__greeting {
