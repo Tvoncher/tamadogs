@@ -95,9 +95,9 @@ function App() {
                   onClick={() => {
                     setBreed("chihuahua");
                     setOpenGreeting(false);
-                    setDogImgSrc("/images/breeds/chihuahua.png");
+                    setDogImgSrc("/images/breeds/chih.png");
                   }}
-                  src={"/images/breeds/chihuahua.png"}
+                  src={"/images/breeds/chih.png"}
                   alt="chihuahua"
                 />
               </div>
