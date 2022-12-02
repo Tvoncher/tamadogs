@@ -11,12 +11,13 @@
 .App__breedContainer {
   display: flex;
   flex-wrap: wrap;
+  align-content: flex-start;
+  row-gap: 10%;
   width: 100vw;
   height: 100vh;
-  gap: 2%;
 }
 .breed {
-  width: 20%;
+  width: 25%;
   height: 25%;
   transition: 1s;
 }
@@ -70,7 +71,7 @@
   width: 30%;
   height: 30%;
   left: 35%;
-  top: 35%;
+  top: 40%;
 }
 
 .App__deathScreen {
@@ -94,5 +95,31 @@
 
   100% {
     opacity: 1;
+  }
+}
+
+@media (orientation: portrait) {
+  .breed img {
+    height: 90%;
+  }
+
+  .App__dogImg {
+    position: absolute;
+    width: 55%;
+    height: 40%;
+    left: 10%;
+    top: 37%;
+  }
+
+  .App__buttons {
+    width: 20%;
+    right: 5%;
+  }
+
+  .App__buttons img {
+    width: 100%;
+    border: 2px solid blue;
+    border-radius: 20%;
+    cursor: pointer;
   }
 }

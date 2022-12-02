@@ -5,11 +5,3 @@
   width: 20%;
   height: 10%;
 }
-.Alerts__dialog {
-  background-color: lightgrey;
-  border-radius: 10%;
-  opacity: 0.8;
-}
-.Alerts__dialog h2 {
-  padding: 2%;
-}

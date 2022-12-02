@@ -22,3 +22,13 @@
 .Events__message h3 {
   margin: 2% 0 0 3%;
 }
+
+@media (orientation: portrait) {
+  .Events {
+    width: 100%;
+    left: 0;
+  }
+  .Events__dogAvatar {
+    width: 40%;
+  }
+}

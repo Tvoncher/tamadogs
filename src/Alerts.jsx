@@ -3,7 +3,7 @@ const Alerts = ({ hunger, stress, happiness }) => {
   const feedMe = [
     "Покорми меня!",
     "Я хочу кушать!",
-    "Кушать,пожалуйста!",
+    "Кушать!",
     "Ты забыл меня покормить?",
     "Ав-ав!",
   ];
@@ -17,36 +17,12 @@ const Alerts = ({ hunger, stress, happiness }) => {
 
   return (
     <div className="Alerts">
-      {hunger < 30 && (
-        <div className="Alerts__dialog">
-          <h2>{feedMe[Math.floor(Math.random() * 5)]}</h2>
-        </div>
-      )}
-      {hunger > 80 && (
-        <div className="Alerts__dialog">
-          <h2>Я сейчас лопну!</h2>
-        </div>
-      )}
-      {stress < 30 && (
-        <div className="Alerts__dialog">
-          <h2>{depressed[Math.floor(Math.random() * 2)]}</h2>
-        </div>
-      )}
-      {stress > 80 && (
-        <div className="Alerts__dialog">
-          <h2>{tooTired[Math.floor(Math.random() * 2)]}</h2>
-        </div>
-      )}
-      {happiness < 30 && (
-        <div className="Alerts__dialog">
-          <h2>Тебе совсем на меня плевать?</h2>
-        </div>
-      )}
-      {happiness > 80 && (
-        <div className="Alerts__dialog">
-          <h2>Ну сколько можно?!</h2>
-        </div>
-      )}
+      {hunger < 30 && <h2>{feedMe[Math.floor(Math.random() * 5)]}</h2>}
+      {hunger > 80 && <h2>Я сейчас лопну!</h2>}
+      {stress < 30 && <h2>{depressed[Math.floor(Math.random() * 2)]}</h2>}
+      {stress > 80 && <h2>{tooTired[Math.floor(Math.random() * 2)]}</h2>}
+      {happiness < 30 && <h2>Тебе совсем на меня плевать?</h2>}
+      {happiness > 80 && <h2>Ну сколько можно?!</h2>}
     </div>
   );
 };
